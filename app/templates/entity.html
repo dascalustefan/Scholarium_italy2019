@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Third party entity</title>
+     <<!-- BOOTSTRAP STYLES-->
+    <link href="{{ url_for('static',filename='assets/css/bootstrap.css') }}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{{ url_for('static',filename='./assets/css/font-awesome.css') }}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{{ url_for('static',filename='assets/css/custom.css') }}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
+</head>
+<body>
+        <form action="/disconnect" id="disconnect">
+            <input type="hidden" type="submit" value="Disconnect">
+        </form>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Third party</a> 
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: left;
+font-size: 16px;"> Last access : {{session.date}}  </br> Pubkey: {{session.pubkey}} </br>Address: {{session.address}}&nbsp; </br>Node address: {{session.node_address}} </div>
+<div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;">
+<a  href="/disconnect" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                   <!-- <img src="assets/img/find_user.png" class="user-image img-responsive"/> -->
+				   <img src="{{ url_for('static',filename='assets/img/find_user1.png') }}" class="user-image img-responsive"/>
+					</li>
+				
+					
+                    <li>
+                        <a  href="."><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    </li>
+                    
+					<li  >
+                        <a   href="\disconnect"><i class="fa fa-square-o fa-3x"></i>Disconnect</a>
+                    </li>	
+                    <!-- 
+					  <li>
+                        <a  href="management.html"><i class="fa fa-desktop fa-3x"></i> University management</a>
+                    </li>
+					<li>
+                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                    </li>
+						   <li  >
+                        <a  href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                    </li>	
+                      <li  >
+                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
+                    </li>
+                    <li  >
+                        <a class="active-menu"  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
+                    </li>			
+					
+					                   
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+
+                                </ul>
+                               
+                            </li>
+                        </ul>
+                      </li> -->	 
+
+                </ul>
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                        <h5>Welcome back, {{session.name}} </h5>
+				        {% if response.valid %}
+						<h5>{{response.valid}}</h5>
+						{% endif %}
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+               <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+					    <div class="panel-heading">
+                            Change your Information
+                        </div>
+						<div class="panel-body">
+                            <div class="row">
+							 <div class="col-md-6">
+						<form role="form" action="change_photo">
+					    <div class="form-group" action="change_photo">
+                        <label>Change your photo</label>
+                        <input name="photo_path" type="file" />
+						</br>
+						<button type="submit" class="btn btn-primary">Change your picture</button>
+						</form>
+                        </div>
+						</div>
+						  <div class="col-md-6">
+						<form role="form" action="change_name">
+					    <div class="form-group">
+						</br>
+                        <label>Change your name</label>
+                        <input class="form-control" name="name" placeholder="Please enter your name" />
+						</br>
+						<button type="submit" class="btn btn-primary">Change your name</button>
+						</form>
+						
+						</div>
+						</div>
+						</div>
+						</div>
+						</div>
+						<div class="panel panel-default">
+						 <div class="panel-heading">
+                           Diploma verification panel
+                        </div>
+						<div class="panel-body">
+						 <div class="row">
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Verify diploma </h3>
+                                    <form role="form" action="verify_diploma">
+                                        <div class="form-group">
+                                            <label>Student CNP:</label>
+                                            <input class="form-control" name="stud_cnp" />
+                                            
+                                        </div>
+
+										<div class="form-group">
+                                            <label>Diploma hash:</label>
+                                            <input class="form-control" name="diploma_hash" />
+                                            <p class="help-block">The hash of the diploma must be calculated with the same algorithm as it was when it was put in the blockchain.</p>
+                                        </div>
+										
+										
+                                        <div class="form-group">
+                                            <label>Asset name:</label>
+                                            <input class="form-control" placeholder="Please enter university asset name"  name="asset_name"/>
+                                      
+										<button type="submit" class="btn btn-primary"  value="Verify">Verify diploma</button>
+                                        
+										</form>
+										
+										</div>
+										</div>
+										</div>
+										</div>
+											</div>
+												</div>
+													</div>
+										<div class="panel panel-default">
+						 <div class="panel-heading">
+                            Diploma searching panel
+                        </div>
+						<div class="panel-body">
+						 <div class="row">
+
+                        <div class="panel-body">
+						<div class="form-group">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Search for diploma </h3>
+										 </br>
+											</br>
+										        <form action="search_diplomas">
+												<label>Search for diploma</label>
+												<div class="form-group">
+                                            <label>Student CNP:</label>
+                                            <input class="form-control" name="stud_cnp" />
+
+                                        </div>
+												<button type="submit" class="btn btn-primary"value=value="Verify">Search for diploma</button>
+											
+												</form>
+                                           
+                                        </div>
+									
+										
+										
+
+										<br>
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+		{% if response.diplomas %}							
+		<div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Diploma listings
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Dimploma</th>
+											<th>University</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									{%set iterator=0%}
+										    {% for diploma, univ_asset in response.diplomas.items() %}
+											 {% set iterator= iterator + 1%}
+											 {% if iterator % 2 == 0 %}
+											 <tr class="odd gradeX">
+											 
+											 <td>{{ diploma }}</td>
+											 <td> {{ univ_asset }}</td> 
+											 {% else %}
+											 <tr class="even gradeC">
+											 <td>{{ diploma }}</td>
+											 <td> {{ univ_asset }}</td> 
+											 </tr>
+											 {% endif %}
+											{% endfor %}
+
+                                        
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+         
+            </div>	
+										
+				{% endif %}						
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+                                   
+                         
+    </div>
+                                
+                               <!-- <div class="col-md-6">
+                                    <h3>Disabled Form State Examples</h3>
+                                    <form role="form">
+                                        <fieldset disabled="disabled">
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled input</label>
+                                                <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled select </label>
+                                                <select id="disabledSelect" class="form-control">
+                                                    <option>Disabled select</option>
+                                                </select>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" />Disabled Checkbox
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Give university accreditation</button>
+                                        </fieldset>
+                                    </form>
+									
+									
+								</div>
+								<br /> -->
+								
+								
+								
+								
+								
+								
+								
+								
+								
+			
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+
+				
+				
+			
+                <!-- /. ROW  -->
+    </div>
+	
+	
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+		
+		
+		
+		
+                    <!--End Advanced Tables -->
+         
+            </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+             <!-- /. PAGE INNER  -->
+            </div>
+		
+		
+		
+		
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+     <script src="{{ url_for('static',filename='assets/js/jquery-1.10.2.js') }}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.metisMenu.js') }}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+         <!-- /. WRAPPER  -->
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/dataTables/jquery.dataTables.js') }}"></script>
+     <script src="{{ url_for('static', filename='assets/js/dataTables/dataTables.bootstrap.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+        
+   
+</body>
+</html>
