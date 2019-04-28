@@ -1,1 +1,1 @@
-scholarium_name = "test53"
+scholarium_name = "test55"

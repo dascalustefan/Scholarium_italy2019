@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+      <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High Authority</title>
+     <<!-- BOOTSTRAP STYLES-->
+    <link href="{{ url_for('static',filename='assets/css/bootstrap.css') }}" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="{{ url_for('static',filename='./assets/css/font-awesome.css') }}" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="{{ url_for('static',filename='assets/css/custom.css') }}" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   
+</head>
+<body>
+        <form action="/disconnect" id="disconnect">
+            <input type="hidden" type="submit" value="Disconnect">
+        </form>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">High Authority</a> 
+            </div>
+  <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: left;
+font-size: 16px;"> Last access : {{session.date}}</br> Address:  {{session.node_address}}  </br> Pubkey: {{session.pubkey}} </br>Address: {{session.address}}&nbsp;  </div>
+<div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;">
+<a  href="/disconnect" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+        </nav>   
+           <!-- /. NAV TOP  -->
+                <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+				<li class="text-center">
+                   <!-- <img src="assets/img/find_user.png" class="user-image img-responsive"/> -->
+				   <img src="{{ url_for('static',filename='assets/img/find_user1.png') }}" class="user-image img-responsive"/>
+					</li>
+				
+					
+                    <li>
+                        <a  href="."><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                    </li>
+                    
+					<li  >
+                        <a   href="\disconnect"><i class="fa fa-square-o fa-3x"></i>Disconnect</a>
+                    </li>	
+                    <!-- 
+					  <li>
+                        <a  href="management.html"><i class="fa fa-desktop fa-3x"></i> University management</a>
+                    </li>
+					<li>
+                        <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                    </li>
+						   <li  >
+                        <a  href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
+                    </li>	
+                      <li  >
+                        <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
+                    </li>
+                    <li  >
+                        <a class="active-menu"  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
+                    </li>			
+					
+					                   
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+
+                                </ul>
+                               
+                            </li>
+                        </ul>
+                      </li> -->	 
+
+                </ul>
+               
+            </div>
+            
+        </nav>  
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper" >
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                     <h2>High Authority</h2>   
+                        <h5>Welcome back, {{session.name}} </h5>
+						        {% if response.create_errors %}
+								<h5>	{{response.create_errors}} </h5>
+								{% endif %}
+																	
+									{% if response.revoke_errors %}
+										<h5>{{response.revoke_errors}}</h5>
+											{% endif %}
+                       
+                    </div>
+                </div>
+                 <!-- /. ROW  -->
+                 <hr />
+               <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+					    <div class="panel-heading">
+                            Change your Information
+                        </div>
+						<div class="panel-body">
+                            <div class="row">
+							 <div class="col-md-6">
+						<form role="form" action="change_photo">
+					    <div class="form-group" action="change_photo">
+                        <label>Change your photo</label>
+                        <input name="photo_path" type="file" />
+						</br>
+						<button type="submit" class="btn btn-primary">Change your picture</button>
+						</form>
+                        </div>
+						</div>
+						  <div class="col-md-6">
+						<form role="form" action="change_name">
+					    <div class="form-group">
+						</br>
+                        <label>Change your name</label>
+                        <input class="form-control" name="name" placeholder="Please enter your name" />
+						</br>
+						<button type="submit" class="btn btn-primary">Change your name</button>
+						</form>
+						
+						</div>
+						</div>
+						</div>
+						</div>
+						</div>
+						<div class="panel panel-default">
+						 <div class="panel-heading">
+                            University actions Tab
+                        </div>
+						<h3>Create university</h3>
+						<div class="panel-body">
+						
+						 <div class="row">
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    
+                                    <form role="form" action="/create_university">
+                                        <div class="form-group">
+                                            <label>University public key:</label>
+                                            <input class="form-control" name="target_pubkey" />
+                                            <p class="help-block">The university should see the public key when it first logs in.</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>University address:</label>
+                                            <input class="form-control" placeholder="Please enter university address"  name="univ_address"/>
+                                        </div>
+										 <div class="form-group">
+                                            <label>University name:</label>
+                                            <input class="form-control" placeholder="Please enter university name"  name="univ_name"/>
+                                        </div>
+										<div class="form-group">
+                                            <label>University asset:</label>
+                                            <input class="form-control" placeholder="Please enter university asset name"  name="asset_name" />
+                                        </div>
+										<button type="submit" class="btn btn-primary" value="Create university">Give university accreditation</button>
+                                        <div class="form-group">
+										  </form>
+										
+                                        </div>
+                                  
+                         
+    </div>
+	</div>
+	</div>
+	</div>
+	</div></div>
+							<div class="panel panel-default">
+						 <div class="panel-heading">
+						 
+						  Diploma actions tab
+						  </div>
+						  <h3>Revoke diploma</h3>
+						 				 </br>
+											</br>
+							<div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+										        <form action="sign_transaction">
+												<label>Revoke diploma transaction blob:</label>
+												<textarea class="form-control" name="transaction_blob" rows="3" name="transaction_blob" style="margin: 0px -6px 0px 0px; width: 547px; height: 79px;"></textarea>
+												<button type="submit" class="btn btn-primary" value="Sign revoke diploma">Sign revoke diploma</button>
+											
+												</form>
+                                           
+           
+                                
+                               <!-- <div class="col-md-6">
+                                    <h3>Disabled Form State Examples</h3>
+                                    <form role="form">
+                                        <fieldset disabled="disabled">
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled input</label>
+                                                <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input" disabled />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledSelect">Disabled select </label>
+                                                <select id="disabledSelect" class="form-control">
+                                                    <option>Disabled select</option>
+                                                </select>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" />Disabled Checkbox
+                                                </label>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Give university accreditation</button>
+                                        </fieldset>
+                                    </form>
+									
+									
+								</div>
+								<br /> -->
+								
+								
+								
+								
+								
+								
+								
+								
+								
+			
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+								
+                             
+                    </div>
+                     <!-- End Form Elements -->
+                </div>
+            </div>
+                <!-- /. ROW  -->
+
+				
+				
+			
+                <!-- /. ROW  -->
+    </div>
+	
+	
+         <!-- /. PAGE WRAPPER  -->
+        </div>
+		
+		
+		
+		<div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             University listings
+                        </div>
+						
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>University name</th>
+                                            <th>University address</th>
+                                            <th>University public key</th>
+                                            <th>Revoke button</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									{%set iterator=0%}
+										     {% for university in response.universities %}
+											 {% set iterator= iterator + 1%}
+											 {% if iterator % 2 == 0 %}
+											 <tr class="odd gradeX">
+											 <form action="/revoke_university">
+											 <input type="hidden" value="{{ university.address }}" name="univ_address">
+											 <td>{{ university.name }}</td>
+											 <td> {{ university.address }}</td>
+											 <td> {{ university.pubkey }} </td>
+											 <td><input type="submit" value="Revoke university"></td>
+											 </form>
+											 </tr>
+											 
+											 {% else %}
+											  <tr class="even gradeC">
+											 <form action="/revoke_university">
+											 <input type="hidden" value="{{ university.address }}" name="univ_address">
+											 <td>{{ university.name }}</td>
+											 <td> {{ university.address }}</td>
+											 <td> {{ university.pubkey }} </td>
+											 <td><input type="submit" value="Revoke university"></td>
+											 </form>
+											 </tr>
+											 {% endif %}
+											{% endfor %}
+
+                                        
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+         
+            </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+             <!-- /. PAGE INNER  -->
+            </div>
+		
+		
+		
+		
+     <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+     <script src="{{ url_for('static',filename='assets/js/jquery-1.10.2.js') }}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/bootstrap.min.js') }}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/jquery.metisMenu.js') }}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/custom.js') }}"></script>
+         <!-- /. WRAPPER  -->
+     <!-- DATA TABLE SCRIPTS -->
+    <script src="{{ url_for('static', filename='assets/js/dataTables/jquery.dataTables.js') }}"></script>
+     <script src="{{ url_for('static', filename='assets/js/dataTables/dataTables.bootstrap.js') }}"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+        
+   
+</body>
+</html>
+

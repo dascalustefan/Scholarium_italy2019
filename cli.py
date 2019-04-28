@@ -75,7 +75,6 @@ class MultichainCLI(object):
 
         time.sleep(6)
 
-
     @classmethod
     def get_address(cls):
         out, _ = cls._multichaincli(" getaddresses")
@@ -157,7 +156,7 @@ class MultichainCLI(object):
     @classmethod
     def revoke_stud(cls, stud_address):
         _, err = cls._multichaincli(" revoke " + stud_address + " send,receive")
-        return "error"
+        return "error" in err
 
     @classmethod
     def issue_asset_univ(cls, univ_address, asset_name, multisig_addr):

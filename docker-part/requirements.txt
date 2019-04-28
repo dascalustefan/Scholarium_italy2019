@@ -1,0 +1,8 @@
+Flask
+Redis
+SQLAlchemy
+flask-sqlalchemy
+flask-marshmallow
+SQLAlchemy
+mysqlclient
+python-secrets
